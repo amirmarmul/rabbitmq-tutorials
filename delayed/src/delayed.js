@@ -30,7 +30,7 @@ amqp.connect('amqp://localhost', function (error0, connection) {
     });
 
     var msg = process.argv.slice(2).join(' ') || 'Hello World!';
-    var secs = msg.toString().split('.').length - 1;
+    var secs = msg.toString().split('.').length - 1 || 0;
 
     channel.sendToQueue(waiting_queue, Buffer.from(msg), {
       persistent: true,
